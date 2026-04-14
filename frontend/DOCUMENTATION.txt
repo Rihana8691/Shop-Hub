@@ -1,0 +1,97 @@
+SE333 Web Technologies 2 - E-Commerce Frontend
+Winter 2026 Mid Lab Assessment (Individual)
+========================================================
+
+Developer Name and ID
+-------------------
+Name: Rihana Abdellah
+ID: RP1872
+
+How to Run the Project
+---------------------
+1. Prerequisites:
+   - Node.js (version 16 or higher)
+   - npm (comes with Node.js)
+
+2. Installation:
+   - Extract the project folder
+   - Open terminal/command prompt in the project directory
+   - Run: npm install
+
+3. Running the Application:
+   - Run: npm run dev
+   - Open browser and navigate to: http://localhost:5173
+   - The application will start automatically
+
+Explanation of Caching Implementation
+-----------------------------------
+
+1. Product Data Cache:
+   - Location: localStorage with key 'product_cache'
+   - Cache Duration: 5 minutes (300,000 milliseconds)
+   - Network Simulation: 500ms delay on first load
+   - Cache Structure: { data: products[], timestamp: number }
+   
+   How it works:
+   - On first load: Simulates 500ms network delay, then caches products
+   - Within 5 minutes: Loads instantly from cache without delay
+   - After 5 minutes: Re-simulates network delay and refreshes cache
+   - Error handling: Falls back to static data if cache is corrupted
+
+2. Search/Filter Cache:
+   - Recent Searches: Stores last 3 unique search queries
+   - Location: localStorage with key 'recent_searches'
+   - Filter Persistence: Last selected category saved to sessionStorage
+   - Session Storage Key: 'last_filter'
+   
+   How it works:
+   - Search queries are cached when user types and searches
+   - Recent searches displayed as suggestions below search input
+   - Last category filter is restored when user returns to page
+   - Cache persists across browser sessions for searches
+   - Filter selections persist only for current session
+
+3. Cart Persistence:
+   - Location: localStorage with key 'cart'
+   - Structure: Array of cart items with product info and quantities
+   - Auto-save: Cart automatically saves on any change
+   - Stock Validation: Prevents adding more items than available stock
+
+4. Order History:
+   - Location: localStorage with key 'orders'
+   - Structure: Array of order objects with items, totals, timestamps
+   - Order Generation: Creates unique order numbers (SH + timestamp)
+   - Stock Management: Decrements product stock when order placed
+
+Assumptions Made
+---------------
+
+1. Data Assumptions:
+   - All product data is hardcoded locally (no backend required)
+   - Product images are from Unsplash (placeholder images)
+   - Stock quantities are static and managed locally
+   - Prices are in Ethiopian Birr (ETB)
+
+2. User Interface Assumptions:
+   - Modern browser with ES6+ support
+   - JavaScript enabled
+   - localStorage available for data persistence
+   - Screen size: Mobile-first responsive design
+
+3. Functional Assumptions:
+   - Single user application (no multi-user support)
+   - No actual payment processing (simulation only)
+   - Email notifications are simulated (not actually sent)
+   - Shipping calculations are based on Ethiopian cities
+
+4. Technical Assumptions:
+   - Node.js and npm are available for development
+   - Vite is used as the build tool
+   - React Router handles client-side navigation
+   - No server-side processing required
+
+5. Business Logic Assumptions:
+   - Orders are processed immediately upon checkout
+   - Stock is decremented in real-time
+   - Cart persists across browser sessions
+   - Wishlist is per-user (stored locally)

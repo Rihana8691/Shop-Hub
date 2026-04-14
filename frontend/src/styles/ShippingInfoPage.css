@@ -1,0 +1,315 @@
+.shipping-container {
+  max-width: 100%;
+  margin: 0;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #F5F5DC 0%, #E8DCC0 100%);
+  min-height: 100vh;
+  position: relative;
+}
+
+.shipping-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(212, 165, 116, 0.1) 35px, rgba(212, 165, 116, 0.1) 70px),
+    repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(92, 51, 23, 0.05) 35px, rgba(92, 51, 23, 0.05) 70px);
+  pointer-events: none;
+}
+
+.shipping-title {
+  font-size: 3rem;
+  color: #5C3317;
+  margin-bottom: 50px;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-family: 'Georgia', serif;
+  position: relative;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shipping-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d4a574, transparent);
+}
+
+.shipping-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.shipping-section {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  padding: 40px;
+  border-radius: 0;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(212, 165, 116, 0.3);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.shipping-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #5C3317, #d4a574, #5C3317);
+}
+
+.shipping-section::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(212, 165, 116, 0.2);
+  pointer-events: none;
+}
+
+.shipping-section h2 {
+  color: #5C3317;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Georgia', serif;
+  position: relative;
+}
+
+.shipping-section h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: #d4a574;
+}
+
+.shipping-methods {
+  display: grid;
+  gap: 25px;
+}
+
+.shipping-method {
+  background: linear-gradient(135deg, rgba(248, 249, 250, 0.8), rgba(255, 255, 255, 0.6));
+  padding: 30px;
+  border-radius: 0;
+  border: 1px solid rgba(212, 165, 116, 0.2);
+  position: relative;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.shipping-method:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.shipping-method::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #5C3317, #d4a574);
+}
+
+.shipping-method h3 {
+  color: #5C3317;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-family: 'Georgia', serif;
+}
+
+.shipping-method p {
+  margin: 12px 0;
+  color: #4a4a4a;
+  line-height: 1.8;
+  font-size: 1rem;
+  font-family: 'Georgia', serif;
+}
+
+.shipping-method strong {
+  color: #5C3317;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+  font-style: italic;
+}
+
+.shipping-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.shipping-info-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.8));
+  padding: 25px 20px;
+  border-radius: 0;
+  border: 1px solid rgba(212, 165, 116, 0.3);
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.shipping-info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.shipping-info-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #d4a574, #5C3317);
+}
+
+.shipping-info-card h4 {
+  color: #5C3317;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+}
+
+.shipping-info-card p {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+}
+
+.shipping-section ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 15px;
+}
+
+.shipping-section ul li {
+  padding: 20px 25px;
+  color: #4a4a4a;
+  line-height: 1.8;
+  background: linear-gradient(135deg, rgba(248, 249, 250, 0.8), rgba(255, 255, 255, 0.6));
+  border: 1px solid rgba(212, 165, 116, 0.2);
+  position: relative;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  transition: all 0.3s ease;
+}
+
+.shipping-section ul li:hover {
+  transform: translateX(10px);
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), rgba(255, 255, 255, 0.8));
+}
+
+.shipping-section ul li::before {
+  content: "§";
+  color: #d4a574;
+  font-weight: bold;
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.feature-highlight {
+  background: linear-gradient(135deg, #5C3317, #d4a574);
+  color: white;
+  padding: 30px;
+  border-radius: 0;
+  margin: 30px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Georgia', serif;
+}
+
+.feature-highlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.1) 10px,
+    rgba(255, 255, 255, 0.1) 20px
+  );
+}
+
+.feature-highlight h3 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.feature-highlight p {
+  margin: 0;
+  opacity: 0.95;
+  font-size: 1.1rem;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .shipping-container {
+    padding: 15px;
+  }
+  
+  .shipping-title {
+    font-size: 1.8rem;
+  }
+  
+  .shipping-section {
+    padding: 20px;
+  }
+  
+  .shipping-method {
+    padding: 15px;
+  }
+}

@@ -1,0 +1,134 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-icon {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-shape {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+.logo-bag {
+  width: 28px;
+  height: 24px;
+  background: linear-gradient(135deg, #d4a574 0%, #b8935f 100%);
+  border-radius: 8px 8px 12px 12px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(139, 90, 43, 0.3);
+}
+
+.logo-bag::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 1px;
+}
+
+.logo-bag::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 6px;
+  right: 6px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 1px;
+}
+
+.logo-handle {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 8px;
+  border: 3px solid #d4a574;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  background: transparent;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.logo-shop {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #d4a574;
+  letter-spacing: -0.5px;
+}
+
+.logo-hub {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #3e2723;
+  letter-spacing: -0.5px;
+}
+
+/* Hover effects */
+.logo-container:hover .logo-bag {
+  background: linear-gradient(135deg, #b8935f 0%, #9b7848 100%);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.logo-container:hover .logo-handle {
+  border-color: #b8935f;
+  transition: all 0.3s ease;
+}
+
+.logo-container:hover .logo-shop {
+  color: #b8935f;
+  transition: all 0.3s ease;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .logo-shape {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .logo-bag {
+    width: 20px;
+    height: 18px;
+    border-radius: 6px 6px 8px 8px;
+  }
+  
+  .logo-handle {
+    width: 12px;
+    height: 6px;
+    border-width: 2px;
+    top: -3px;
+  }
+  
+  .logo-shop,
+  .logo-hub {
+    font-size: 1.2rem;
+  }
+}

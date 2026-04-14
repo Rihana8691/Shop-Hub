@@ -1,0 +1,118 @@
+.product-details-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.back-button {
+  padding: 10px 20px;
+  background: white;
+  border: 2px solid #d4a574;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  transition: all 0.3s;
+  color: #5C3317;
+  font-weight: 500;
+  font-family: 'Georgia', serif;
+  display: inline-block;
+}
+
+.back-button:hover {
+  border-color: #667eea;
+  transform: translateX(-5px);
+}
+
+.product-details-content {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.product-image-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+.detail-image {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.product-info-section {
+  flex: 1;
+}
+
+.product-name {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.product-price-detail {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 15px;
+}
+
+.stock-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.stock-badge.in-stock {
+  background: #d4edda;
+  color: #155724;
+}
+
+.stock-badge.out-of-stock {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.product-description {
+  line-height: 1.6;
+  margin: 20px 0;
+  color: #666;
+}
+
+.product-category {
+  color: #999;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.add-to-cart-detail {
+  padding: 12px 30px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.add-to-cart-detail.enabled {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.add-to-cart-detail.enabled:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.add-to-cart-detail.disabled {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}

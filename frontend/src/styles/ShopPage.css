@@ -1,0 +1,142 @@
+.shop-container {
+  max-width: 100%;
+  margin: 0;
+  padding: 40px 20px;
+  background-color: var(--background);
+  min-height: 100vh;
+}
+
+.shop-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 60px 20px;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.shop-title {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.shop-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: inherit;
+}
+
+.filter-section {
+  background-color: var(--surface);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 40px;
+  border: 1px solid var(--border);
+}
+
+
+.category-filters {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.category-btn {
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-family: inherit;
+}
+
+.category-btn:hover {
+  border-color: var(--border-hover);
+  background-color: var(--surface-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.category-btn.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.result-count {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-family: inherit;
+  text-align: center;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.no-products {
+  text-align: center;
+  padding: 60px 40px;
+  background-color: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+.no-products h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-weight: 600;
+}
+
+.no-products p {
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 16px;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+  .shop-container {
+    padding: 15px;
+  }
+  
+  .shop-title {
+    font-size: 2rem;
+  }
+  
+  .shop-description {
+    font-size: 1rem;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
