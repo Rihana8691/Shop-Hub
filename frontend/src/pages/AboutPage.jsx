@@ -16,7 +16,7 @@ const AboutPage = () => {
   useEffect(() => {
     const targetStats = {
       customers: 10000,
-      products:20,
+      products: 20,
       brands: 20,
       satisfaction: 99
     };
