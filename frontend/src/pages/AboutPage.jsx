@@ -115,7 +115,7 @@ const AboutPage = () => {
                 <div className="member-avatar">
                   <i className="fas fa-user"></i>
                 </div>
-                <h3>Riab Abraham</h3>
+                <h3>rihana abdellah</h3>
                 <p className="member-title">Founder & CEO</p>
                 <p className="member-bio">Passionate about creating the best online shopping experience in Ethiopia.</p>
               </div>
@@ -123,7 +123,7 @@ const AboutPage = () => {
                 <div className="member-avatar">
                   <i className="fas fa-user"></i>
                 </div>
-                <h3>Sarah Tesfaye</h3>
+                <h3>Ilham</h3>
                 <p className="member-title">Head of Operations</p>
                 <p className="member-bio">Ensuring smooth operations and exceptional customer service.</p>
               </div>
@@ -131,7 +131,7 @@ const AboutPage = () => {
                 <div className="member-avatar">
                   <i className="fas fa-user"></i>
                 </div>
-                <h3>Michael Bekele</h3>
+                <h3>sued</h3>
                 <p className="member-title">Tech Lead</p>
                 <p className="member-bio">Building innovative technology solutions for our platform.</p>
               </div>
@@ -139,7 +139,7 @@ const AboutPage = () => {
                 <div className="member-avatar">
                   <i className="fas fa-user"></i>
                 </div>
-                <h3>Hanna Mulugeta</h3>
+                <h3>hayat</h3>
                 <p className="member-title">Customer Success Manager</p>
                 <p className="member-bio">Dedicated to ensuring every customer has a great experience.</p>
               </div>
