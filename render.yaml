@@ -1,0 +1,14 @@
+services:
+  # Static Site Service for the React Frontend
+  - type: web
+    name: shop-hub-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: NODE_VERSION
+        value: 18
