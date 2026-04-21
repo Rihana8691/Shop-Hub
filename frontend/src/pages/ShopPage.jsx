@@ -146,31 +146,54 @@ const ShopPage = () => {
         <div style={{display: 'grid', gridTemplateColumns: '2fr 1fr 1fr auto', gap: '20px', alignItems: 'end'}}>
           {/* Search with Suggestions */}
           <div style={{position: 'relative'}}>
-            <input
-              type="text"
-              placeholder="Search products..."
-              value={searchTerm}
-              onChange={(e) => {
-                handleSearch(e.target.value);
-              }}
-              onFocus={() => {
-                if (searchTerm.length > 0) {
-                  setShowSuggestions(true);
-                }
-              }}
-              onBlur={() => {
-                setTimeout(() => setShowSuggestions(false), 200);
-              }}
-              style={{
-                width: '100%',
-                padding: '12px',
-                border: '1px solid var(--border)',
-                borderRadius: 'var(--radius-md)',
-                fontSize: '16px',
-                backgroundColor: 'var(--background)',
-                color: 'var(--text-primary)'
-              }}
-            />
+            <div style={{position: 'relative', display: 'flex', alignItems: 'center'}}>
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchTerm}
+                onChange={(e) => {
+                  handleSearch(e.target.value);
+                }}
+                onFocus={() => {
+                  if (searchTerm.length > 0) {
+                    setShowSuggestions(true);
+                  }
+                }}
+                onBlur={() => {
+                  setTimeout(() => setShowSuggestions(false), 200);
+                }}
+                style={{
+                  width: '100%',
+                  padding: '12px 40px 12px 12px',
+                  border: '1px solid var(--border)',
+                  borderRadius: 'var(--radius-md)',
+                  fontSize: '16px',
+                  backgroundColor: 'var(--background)',
+                  color: 'var(--text-primary)'
+                }}
+              />
+              <button
+                onClick={() => {
+                  if (searchTerm.trim()) {
+                    handleSearch(searchTerm);
+                  }
+                }}
+                style={{
+                  position: 'absolute',
+                  right: '12px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--text-secondary)',
+                  cursor: 'pointer',
+                  fontSize: '16px',
+                  padding: '8px'
+                }}
+              >
+                🔍
+              </button>
+            </div>
             
             {showSuggestions && recentSearches.length > 0 && (
               <div style={{
