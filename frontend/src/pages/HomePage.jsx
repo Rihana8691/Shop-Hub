@@ -25,16 +25,19 @@ const HomePage = () => {
     return matchesSearch && matchesCategory;
   });
 
-  // Fallback: if products exist but filteredProducts is empty, show all products
-  const displayProducts = filteredProducts.length > 0 ? filteredProducts : products;
+  // Always show filtered results - no fallback
+  const displayProducts = filteredProducts;
 
   const handleSearch = (value) => {
     setSearchTerm(value);
     if (value.trim()) {
       addRecentSearch(value);
     }
-    // Delay hiding suggestions to allow clicking
-    setTimeout(() => setShowSuggestions(false), 200);
+    if (value.length > 0) {
+      setShowSuggestions(true);
+    } else {
+      setShowSuggestions(false);
+    }
   };
 
   const handleCategoryChange = (category) => {
@@ -56,28 +59,97 @@ const HomePage = () => {
     <div className="home-container">
             
       <div className="filter-section">
-        <div className="search-container">
-          <input
-            type="text"
-            placeholder="Search products..."
-            value={searchTerm}
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-              if (e.target.value) setShowSuggestions(true);
-            }}
-            onFocus={() => setShowSuggestions(true)}
-            className="search-input"
-          />
+        <div className="search-container" style={{position: 'relative'}}>
+          <div style={{position: 'relative', display: 'flex', alignItems: 'center'}}>
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={searchTerm}
+              onChange={(e) => {
+                handleSearch(e.target.value);
+              }}
+              onFocus={() => {
+                if (searchTerm.length > 0) {
+                  setShowSuggestions(true);
+                }
+              }}
+              onBlur={() => {
+                setTimeout(() => setShowSuggestions(false), 200);
+              }}
+              className="search-input"
+              style={{
+                width: '100%',
+                padding: '12px 40px 12px 12px',
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius-md)',
+                fontSize: '16px',
+                backgroundColor: 'var(--background)',
+                color: 'var(--text-primary)'
+              }}
+            />
+            <button
+              onClick={() => {
+                if (searchTerm.trim()) {
+                  handleSearch(searchTerm);
+                }
+              }}
+              style={{
+                position: 'absolute',
+                right: '12px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                background: 'none',
+                border: 'none',
+                color: 'var(--text-secondary)',
+                cursor: 'pointer',
+                fontSize: '16px',
+                padding: '8px'
+              }}
+            >
+              🔍
+            </button>
+          </div>
           
           {showSuggestions && recentSearches.length > 0 && (
-            <div className="suggestions-dropdown">
+            <div style={{
+              position: 'absolute',
+              top: '100%',
+              left: 0,
+              right: 0,
+              backgroundColor: 'var(--surface)',
+              border: '1px solid var(--border)',
+              borderRadius: 'var(--radius-md)',
+              marginTop: '4px',
+              maxHeight: '200px',
+              overflow: 'auto',
+              zIndex: 10,
+              boxShadow: 'var(--shadow-md)'
+            }}>
               {recentSearches.map((search, index) => (
                 <div
                   key={index}
-                  onClick={() => handleSearch(search)}
-                  className="suggestion-item"
+                  onClick={() => {
+                    handleSearch(search);
+                    setShowSuggestions(false);
+                  }}
+                  onMouseDown={(e) => e.preventDefault()}
+                  style={{
+                    padding: '12px 16px',
+                    cursor: 'pointer',
+                    borderBottom: index < recentSearches.length - 1 ? '1px solid var(--border)' : 'none',
+                    color: 'var(--text-primary)',
+                    backgroundColor: 'transparent',
+                    transition: 'all 0.2s ease',
+                    fontSize: '14px'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'var(--surface-hover)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                  }}
                 >
-                  {search}
+                  🔍 {search}
                 </div>
               ))}
             </div>

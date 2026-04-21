@@ -102,7 +102,12 @@ export const ProductCacheProvider = ({ children }) => {
   useEffect(() => {
     const saved = localStorage.getItem('recent_searches');
     if (saved) {
-      setRecentSearches(JSON.parse(saved));
+      try {
+        setRecentSearches(JSON.parse(saved));
+      } catch (error) {
+        console.error('Error loading recent searches:', error);
+        setRecentSearches([]);
+      }
     }
   }, []);
 
