@@ -4,7 +4,7 @@ import { useProductCache } from '../context/ProductCacheContext';
 import '../styles/ShopPage.css';
 
 const ShopPage = () => {
-  const { products, loading, recentSearches, addRecentSearch } = useProductCache();
+  const { products, loading, recentSearches, addRecentSearch, lastFilter, setCurrentFilter } = useProductCache();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -20,6 +20,23 @@ const ShopPage = () => {
     // Scroll to top when page loads
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
+
+  // Initialize filters from saved cache
+  useEffect(() => {
+    if (lastFilter) {
+      if (lastFilter === 'reset') {
+        resetFilters();
+      } else if (lastFilter.startsWith('sort_')) {
+        const sortType = lastFilter.replace('sort_', '');
+        setSortBy(sortType);
+      } else if (lastFilter.startsWith('price_')) {
+        const [min, max] = lastFilter.replace('price_', '').split('_');
+        setPriceRange({ min: parseInt(min) || 0, max: parseInt(max) || 10000 });
+      } else if (lastFilter !== 'All') {
+        setSelectedCategory(lastFilter);
+      }
+    }
+  }, [lastFilter]);
 
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -54,10 +71,12 @@ const ShopPage = () => {
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
+    setCurrentFilter(category);
   };
 
   const handleSortChange = (sort) => {
     setSortBy(sort);
+    setCurrentFilter(`sort_${sort}`);
   };
 
   // Pagination logic
@@ -71,10 +90,12 @@ const ShopPage = () => {
   
   // Price range handler
   const handlePriceRangeChange = (type, value) => {
-    setPriceRange(prev => ({
-      ...prev,
+    const newRange = {
+      ...priceRange,
       [type]: parseInt(value) || 0
-    }));
+    };
+    setPriceRange(newRange);
+    setCurrentFilter(`price_${newRange.min}_${newRange.max}`);
     setCurrentPage(1); // Reset to first page when filtering
   };
 
@@ -85,6 +106,7 @@ const ShopPage = () => {
     setPriceRange({ min: 0, max: 10000 });
     setInStockOnly(false);
     setSortBy('name');
+    setCurrentFilter('reset');
     setCurrentPage(1);
   };
 
