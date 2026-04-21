@@ -66,7 +66,11 @@ const ShopPage = () => {
     if (value.trim()) {
       addRecentSearch(value);
     }
-    setTimeout(() => setShowSuggestions(false), 200);
+    if (value.length > 0) {
+      setShowSuggestions(true);
+    } else {
+      setShowSuggestions(false);
+    }
   };
 
   const handleCategoryChange = (category) => {
@@ -147,10 +151,16 @@ const ShopPage = () => {
               placeholder="Search products..."
               value={searchTerm}
               onChange={(e) => {
-                setSearchTerm(e.target.value);
-                if (e.target.value) setShowSuggestions(true);
+                handleSearch(e.target.value);
               }}
-              onFocus={() => setShowSuggestions(true)}
+              onFocus={() => {
+                if (searchTerm.length > 0) {
+                  setShowSuggestions(true);
+                }
+              }}
+              onBlur={() => {
+                setTimeout(() => setShowSuggestions(false), 200);
+              }}
               style={{
                 width: '100%',
                 padding: '12px',
@@ -174,20 +184,34 @@ const ShopPage = () => {
                 marginTop: '4px',
                 maxHeight: '200px',
                 overflow: 'auto',
-                zIndex: 10
+                zIndex: 10,
+                boxShadow: 'var(--shadow-md)'
               }}>
                 {recentSearches.map((search, index) => (
                   <div
                     key={index}
-                    onClick={() => handleSearch(search)}
+                    onClick={() => {
+                      handleSearch(search);
+                      setShowSuggestions(false);
+                    }}
+                    onMouseDown={(e) => e.preventDefault()}
                     style={{
-                      padding: '10px 12px',
+                      padding: '12px 16px',
                       cursor: 'pointer',
-                      borderBottom: '1px solid var(--border)',
-                      color: 'var(--text-primary)'
+                      borderBottom: index < recentSearches.length - 1 ? '1px solid var(--border)' : 'none',
+                      color: 'var(--text-primary)',
+                      backgroundColor: 'transparent',
+                      transition: 'all 0.2s ease',
+                      fontSize: '14px'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = 'var(--surface-hover)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = 'transparent';
                     }}
                   >
-                    {search}
+                    🔍 {search}
                   </div>
                 ))}
               </div>
