@@ -205,10 +205,10 @@ const ShopPage = () => {
                       fontSize: '14px'
                     }}
                     onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = 'var(--surface-hover)';
+                      e.currentTarget.style.backgroundColor = 'var(--surface-hover)';
                     }}
                     onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = 'transparent';
+                      e.currentTarget.style.backgroundColor = 'transparent';
                     }}
                   >
                     🔍 {search}
